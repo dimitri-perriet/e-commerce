@@ -1,10 +1,11 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+    <HeaderCart/>
   <router-view/>
 </template>
+
+<script setup>
+ import HeaderCart from '@/components/HeaderCart'
+ </script>
 
 <style>
 #app {

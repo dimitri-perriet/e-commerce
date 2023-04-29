@@ -21,6 +21,7 @@ import { useCommerceStore} from "@/store/CommerceStore";
 const commerceStore = useCommerceStore();
 
 function addToCart(e){
+    e.preventDefault()
     const item = e.target.dataset
     console.log(item)
     commerceStore.addToCart({id: item.id,name: item.name,img: item.img,price: Number(item.price*0.01),qty:1})

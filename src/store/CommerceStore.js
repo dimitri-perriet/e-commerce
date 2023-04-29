@@ -14,6 +14,9 @@ export const useCommerceStore = defineStore('commerce', {
         addToCart(_item){
             const i = this.cart.findIndex(i=>i.id===_item.id)
             i === -1 ? this.cart.push(_item) : this.cart[i].qty++
+        },
+        deleteItem(_index){
+            this.cart.splice(_index, 1)
         }
     }
 })
