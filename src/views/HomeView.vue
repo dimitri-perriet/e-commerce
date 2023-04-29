@@ -1,18 +1,38 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <h1>Découvrez nos produits</h1>
+      <el-row class="productRow">
+          <el-col :body-style="{ width: '50px' }" :span="12" v-for="product in commerceStore.products" :key="product.productId">
+              <ProductCard :product="product"/>
+          </el-col>
+      </el-row>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
+import { useCommerceStore } from "@/store/CommerceStore";
+import ProductCard from "@/components/ProductCard.vue";
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+      ProductCard
+  },
+  setup() {
+    const commerceStore = useCommerceStore();
+
+    commerceStore.getProducts("/products.json")
+
+    return { commerceStore };
   }
 }
+
 </script>
+
+<style>
+.productRow {
+    margin: 0 auto;
+    width: 50%;
+}
+</style>
