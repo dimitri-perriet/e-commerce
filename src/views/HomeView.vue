@@ -1,6 +1,7 @@
 <template>
   <div class="home">
       <h1>Découvrez nos produits</h1>
+      {{commerceStore.cart}}
       <el-row class="productRow">
           <el-col :body-style="{ width: '50px' }" :span="12" v-for="product in commerceStore.products" :key="product.productId">
               <ProductCard :product="product"/>
