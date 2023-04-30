@@ -11,7 +11,7 @@
                 <div class="bottom">
                     <el-text tag="b">{{ props.product.productPrice/100 }} €
                     </el-text>
-                    <el-button data-qty="1" :data-id="props.product.productId" :data-price="props.product.productPrice" :data-name="props.product.productName" :data-img="props.product.productPicture" @click="addToCart" type="primary"  :icon="ShoppingTrolley" circle class="button"/>
+                    <el-button data-qty="1" :data-id="props.product.productId" :data-price="props.product.productPrice" :data-name="props.product.productName" :data-img="props.product.productPicture" :data-ean="props.product.productEAN" @click="addToCart" type="primary"  :icon="ShoppingTrolley" circle class="button"/>
                 </div>
             </el-card>
 </template>
@@ -34,7 +34,7 @@ function addToCart(e){
         customClass: 'notification'
 
     })
-    commerceStore.addToCart({id: item.id,name: item.name,img: item.img,price: Number(item.price*0.01),qty:1})
+    commerceStore.addToCart({id: item.id, ean: item.ean, name: item.name,img: item.img,price: Number(item.price*0.01),qty:1})
 }
 const props = defineProps({
     product: {

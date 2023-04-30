@@ -28,6 +28,11 @@
                         <div class="title">
                             {{ item.name }}
                         </div>
+                        <div class="EAN">
+                            <el-text type="info">
+                                <span v-if="item.ean"> EAN : {{ item.ean }} </span>
+                            </el-text>
+                        </div>
                         <div class="qty">
                             <el-input-number v-model="item.qty" :min="1" :max="10"/>
                         </div>
@@ -126,4 +131,8 @@ html, body {
      place-self: flex-end;
  }
 
+ .EAN {
+     margin-left: 20px;
+     width: 145px;
+ }
 </style>
