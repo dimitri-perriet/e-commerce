@@ -3,12 +3,15 @@
                 <el-image style="height: 300px; margin: 0 auto; display: block" :src="props.product.productPicture" fit="contain"></el-image>
 
                 <div style="padding: 14px">
+                    <el-text type="info">{{ props.product.productEAN }}</el-text>
+                     <br>
+
                     <span>{{ props.product.productName }}</span>
                 </div>
                 <div class="bottom">
                     <el-text tag="b">{{ props.product.productPrice/100 }} €
                     </el-text>
-                    <el-button data-qty="1" :data-id="props.product.productId" :data-price="props.product.productPrice" :data-name="props.product.productName" :data-img="props.product.productPicture" @click="addToCart" type="primary" class="button">Ajouter au panier</el-button>
+                    <el-button data-qty="1" :data-id="props.product.productId" :data-price="props.product.productPrice" :data-name="props.product.productName" :data-img="props.product.productPicture" @click="addToCart" type="primary"  :icon="ShoppingTrolley" circle class="button"/>
                 </div>
             </el-card>
 </template>
@@ -17,6 +20,7 @@
 
 import { useCommerceStore} from "@/store/CommerceStore";
 import { ElNotification } from 'element-plus'
+import { ShoppingTrolley } from "@element-plus/icons-vue";
 
 
 const commerceStore = useCommerceStore();
@@ -66,7 +70,7 @@ const props = defineProps({
 .productCard{
     padding: 0;
     margin: 10px 20px;
-    height: 450px;
+    height: 470px;
     position: relative;
 }
 
