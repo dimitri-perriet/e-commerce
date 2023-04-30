@@ -18,5 +18,14 @@ export const useCommerceStore = defineStore('commerce', {
         deleteItem(_index){
             this.cart.splice(_index, 1)
         }
+    },
+    getters: {
+        total(){
+            let total = 0
+            this.cart.forEach( item=> {
+                total += item.price * item.qty
+            });
+            return total.toFixed(2)
+        }
     }
 })
