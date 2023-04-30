@@ -1,15 +1,14 @@
 <template>
             <el-card class="productCard">
-                <img
-                    :src="props.product.productPicture"
-                    class="image"
-                />
+                <el-image style="height: 300px; margin: 0 auto; display: block" :src="props.product.productPicture" fit="contain"></el-image>
+
                 <div style="padding: 14px">
                     <span>{{ props.product.productName }}</span>
-                    <div class="bottom">
-                        <time class="time">{{ props.product.productPrice*0.01 }}</time>
-                        <el-button data-qty="1" :data-id="props.product.productId" :data-price="props.product.productPrice" :data-name="props.product.productName" :data-img="props.product.productPicture" @click="addToCart" type="primary" class="button">Ajouter au panier</el-button>
-                    </div>
+                </div>
+                <div class="bottom">
+                    <el-text tag="b">{{ props.product.productPrice/100 }} €
+                    </el-text>
+                    <el-button data-qty="1" :data-id="props.product.productId" :data-price="props.product.productPrice" :data-name="props.product.productName" :data-img="props.product.productPicture" @click="addToCart" type="primary" class="button">Ajouter au panier</el-button>
                 </div>
             </el-card>
 </template>
@@ -17,12 +16,20 @@
 <script setup>
 
 import { useCommerceStore} from "@/store/CommerceStore";
+import { ElNotification } from 'element-plus'
+
 
 const commerceStore = useCommerceStore();
 
 function addToCart(e){
     const item = e.currentTarget.dataset
-    console.log(item)
+    ElNotification({
+        title: 'Produit ajouté au panier',
+        message: 'Votre produit a été ajouté au panier',
+        type: 'success',
+        customClass: 'notification'
+
+    })
     commerceStore.addToCart({id: item.id,name: item.name,img: item.img,price: Number(item.price*0.01),qty:1})
 }
 const props = defineProps({
@@ -46,6 +53,9 @@ const props = defineProps({
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: absolute;
+    bottom: 20px;
+    width: 90%;
 }
 
 .button {
@@ -53,14 +63,15 @@ const props = defineProps({
     min-height: auto;
 }
 
-.image {
-    height: 300px;
-    margin: 0 auto;
-    display: block;
-}
-
 .productCard{
     padding: 0;
     margin: 10px 20px;
+    height: 450px;
+    position: relative;
+}
+
+.notification{
+    font-family: "Helvetica Neue";
+    font-size: 12px;
 }
 </style>
