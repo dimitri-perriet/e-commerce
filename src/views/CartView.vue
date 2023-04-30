@@ -50,6 +50,10 @@
 import { Delete } from "@element-plus/icons-vue";
 import { useCommerceStore } from "@/store/CommerceStore";
 const commerceStore = useCommerceStore();
+
+function deleteItem(i) {
+    commerceStore.deleteItem(i)
+}
 </script>
 
 <style>
@@ -107,4 +111,19 @@ html, body {
 .qty {
     flex: 1;
 }
+
+</style>
+
+<style scoped>
+ .total {
+       display: flex;
+       flex-direction: column;
+       place-items: flex-end;
+    width: 97%;
+   }
+
+ .total .el-text {
+     place-self: flex-end;
+ }
+
 </style>

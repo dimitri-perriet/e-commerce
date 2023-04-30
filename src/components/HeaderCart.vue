@@ -1,7 +1,14 @@
 <template>
-    <nav>
-        <router-link to="/">Home</router-link>
-        |
+    <nav v-if="this.$route.path === '/'" style="justify-content: flex-end">
+        <router-link v-if="this.$route.path !== '/'" to="/"> <el-icon><Back /></el-icon> Nos produits</router-link>
+        <el-icon @click.prevent="toggleCart" :size="25">
+            <el-badge :value="commerceStore.cart.length" class="cart-icon">
+                <shopping-cart/>
+            </el-badge>
+        </el-icon>
+    </nav>
+    <nav v-else>
+        <router-link v-if="this.$route.path !== '/'" to="/"> <el-icon><Back /></el-icon> Nos produits</router-link>
         <el-icon @click.prevent="toggleCart" :size="25">
             <el-badge :value="commerceStore.cart.length" class="cart-icon">
                 <shopping-cart/>
@@ -51,10 +58,15 @@
                     </template>
                 </el-scrollbar>
                 <el-divider/>
-                <router-link to="/cart">Panier</router-link>
-                <div class="total">
+                <div class="footer">
+
+                    <el-button @click="HandleClick" type="primary" plain>Accéder au panier</el-button>
+                        <div class="total">
                     <h3>Total</h3>
-                    <el-text size="large">{{ commerceStore.total }} €</el-text>
+                    <el-text size="large">
+                        {{ commerceStore.total }} €
+                    </el-text>
+                </div>
                 </div>
             </div>
         </div>
@@ -64,10 +76,10 @@
 <script setup>
 
 import {useCommerceStore} from "@/store/CommerceStore";
-import {ShoppingCart} from '@element-plus/icons-vue'
 import {ref} from 'vue'
-import {Delete} from '@element-plus/icons-vue'
-import { CloseBold } from "@element-plus/icons-vue";
+import {Delete, Back, CloseBold, ShoppingCart} from '@element-plus/icons-vue'
+import router from "@/router";
+
 
 const commerceStore = useCommerceStore();
 const cart = ref(null)
@@ -81,6 +93,10 @@ function deleteItem(i) {
     commerceStore.deleteItem(i)
 }
 
+function HandleClick() {
+    cart.value = null
+    router.push('/cart')
+}
 </script>
 
 
@@ -162,4 +178,16 @@ font-family: "Helvetica Neue";
     width: 100px;
     margin-right: 20px;
 }
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
 </style>
