@@ -51,6 +51,7 @@
                     </template>
                 </el-scrollbar>
                 <el-divider/>
+                <router-link to="/cart">Panier</router-link>
                 <div class="total">
                     <h3>Total</h3>
                     <el-text size="large">{{ commerceStore.total }} €</el-text>
@@ -72,7 +73,6 @@ const commerceStore = useCommerceStore();
 const cart = ref(null)
 
 function toggleCart() {
-    console.log('Panier panier pinia')
     cart.value ? cart.value = null : cart.value = 'open'
 
 }
@@ -156,5 +156,10 @@ function deleteItem(i) {
 
 .el-popconfirm {
 font-family: "Helvetica Neue";
+}
+
+.qty {
+    width: 100px;
+    margin-right: 20px;
 }
 </style>
