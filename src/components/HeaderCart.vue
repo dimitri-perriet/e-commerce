@@ -125,20 +125,15 @@ function HandleClick() {
 
 
 #cart .container {
-    margin: 30px;
+    margin-bottom: 30px;
 }
 
-#cart .container .total {
-    position: absolute;
-    right: 20px;
-    bottom: 30px;
-}
 
 #cart .close {
     cursor: pointer;
     position: absolute;
     left : 30px;
-    top : 60px;
+    top : 30px;
 }
 
 #cart .container .content {
