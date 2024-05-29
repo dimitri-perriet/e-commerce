@@ -1,24 +1,34 @@
-# e-commerce
+# E-commerce
 
-## Project setup
-```
-npm install
-```
+## Description
+Un projet de site e-commerce développé avec Vue.js. Ce projet permet de mettre en place une application de commerce électronique avec des fonctionnalités de base pour l'achat et la vente de produits.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Installation
 
-### Compiles and minifies for production
-```
+1. Clonez le repository :
+   ```
+   git clone https://github.com/dimitri-perriet/e-commerce.git
+   ```
+   
+2. Installez les dépendances :
+  ```
+  npm install
+  ```
+
+ ## Utilisation
+  ### Développement
+Pour compiler et recharger le projet pour le développement :
+  ```
+  npm run serve
+  ```
+  ###  Production
+Pour compiler et minifier le projet pour la production :
+  ```
 npm run build
-```
+  ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+  ###  Linting
+Pour analyser et corriger les fichiers :
+  ```
+  npm run lint
+  ```
